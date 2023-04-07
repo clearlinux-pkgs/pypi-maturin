@@ -4,10 +4,10 @@
 # Using build pattern: pyproject
 #
 Name     : pypi-maturin
-Version  : 0.14.16
-Release  : 2
-URL      : https://files.pythonhosted.org/packages/2f/e1/c3050c71b27f90529a2a78a447afa5915da6169c10c212ff974e2c6c780b/maturin-0.14.16.tar.gz
-Source0  : https://files.pythonhosted.org/packages/2f/e1/c3050c71b27f90529a2a78a447afa5915da6169c10c212ff974e2c6c780b/maturin-0.14.16.tar.gz
+Version  : 0.14.17
+Release  : 3
+URL      : https://files.pythonhosted.org/packages/e4/83/8d43216b175e5840802af49d530761bce3176f0b502c561d1735eab82b57/maturin-0.14.17.tar.gz
+Source0  : https://files.pythonhosted.org/packages/e4/83/8d43216b175e5840802af49d530761bce3176f0b502c561d1735eab82b57/maturin-0.14.17.tar.gz
 Source1  : http://localhost/cgit/vendor/pypi-maturin/snapshot/pypi-maturin-2023-03-27-18-46-10.tar.xz
 Summary  : Build and publish crates with pyo3, rust-cpython and cffi bindings as well as rust binaries as python packages
 Group    : Development/Tools
@@ -83,19 +83,19 @@ python3 components for the pypi-maturin package.
 
 
 %prep
-%setup -q -n maturin-0.14.16
+%setup -q -n maturin-0.14.17
 cd %{_builddir}
 tar xf %{_sourcedir}/pypi-maturin-2023-03-27-18-46-10.tar.xz
-cd %{_builddir}/maturin-0.14.16
+cd %{_builddir}/maturin-0.14.17
 mkdir -p ./vendor
-cp -r %{_builddir}/pypi-maturin-2023-03-27-18-46-10/* %{_builddir}/maturin-0.14.16/./vendor
+cp -r %{_builddir}/pypi-maturin-2023-03-27-18-46-10/* %{_builddir}/maturin-0.14.17/./vendor
 mkdir -p .cargo
 echo '[source.crates-io]' >> .cargo/config.toml
 echo 'replace-with = "vendored-sources"' >> .cargo/config.toml
 echo '[source.vendored-sources]' >> .cargo/config.toml
 echo 'directory = "vendor"' >> .cargo/config.toml
 pushd ..
-cp -a maturin-0.14.16 buildavx2
+cp -a maturin-0.14.17 buildavx2
 popd
 
 %build
@@ -103,7 +103,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1679945518
+export SOURCE_DATE_EPOCH=1680885387
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
