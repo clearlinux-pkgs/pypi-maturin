@@ -5,7 +5,7 @@
 #
 Name     : pypi-maturin
 Version  : 0.14.17
-Release  : 3
+Release  : 4
 URL      : https://files.pythonhosted.org/packages/e4/83/8d43216b175e5840802af49d530761bce3176f0b502c561d1735eab82b57/maturin-0.14.17.tar.gz
 Source0  : https://files.pythonhosted.org/packages/e4/83/8d43216b175e5840802af49d530761bce3176f0b502c561d1735eab82b57/maturin-0.14.17.tar.gz
 Source1  : http://localhost/cgit/vendor/pypi-maturin/snapshot/pypi-maturin-2023-03-27-18-46-10.tar.xz
@@ -13,7 +13,6 @@ Summary  : Build and publish crates with pyo3, rust-cpython and cffi bindings as
 Group    : Development/Tools
 License  : 0BSD Apache-2.0 BSD-3-Clause BSD-4-Clause BSL-1.0 CC0-1.0 GPL-2.0 ICU MIT MPL-2.0 MPL-2.0-no-copyleft-exception OpenSSL Unicode-DFS-2016 Unlicense Zlib bzip2-1.0.6
 Requires: pypi-maturin-bin = %{version}-%{release}
-Requires: pypi-maturin-filemap = %{version}-%{release}
 Requires: pypi-maturin-license = %{version}-%{release}
 Requires: pypi-maturin-python = %{version}-%{release}
 Requires: pypi-maturin-python3 = %{version}-%{release}
@@ -40,18 +39,9 @@ _formerly pyo3-pack_
 Summary: bin components for the pypi-maturin package.
 Group: Binaries
 Requires: pypi-maturin-license = %{version}-%{release}
-Requires: pypi-maturin-filemap = %{version}-%{release}
 
 %description bin
 bin components for the pypi-maturin package.
-
-
-%package filemap
-Summary: filemap components for the pypi-maturin package.
-Group: Default
-
-%description filemap
-filemap components for the pypi-maturin package.
 
 
 %package license
@@ -74,7 +64,6 @@ python components for the pypi-maturin package.
 %package python3
 Summary: python3 components for the pypi-maturin package.
 Group: Default
-Requires: pypi-maturin-filemap = %{version}-%{release}
 Requires: python3-core
 Provides: pypi(maturin)
 
@@ -103,15 +92,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1680885387
+export SOURCE_DATE_EPOCH=1683041202
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 -m build --wheel --skip-dependency-check --no-isolation
 pushd ../buildavx2/
@@ -744,12 +733,8 @@ popd
 
 %files bin
 %defattr(-,root,root,-)
+/V3/usr/bin/maturin
 /usr/bin/maturin
-/usr/share/clear/optimized-elf/bin*
-
-%files filemap
-%defattr(-,root,root,-)
-/usr/share/clear/filemap/filemap-pypi-maturin
 
 %files license
 %defattr(0644,root,root,0755)
