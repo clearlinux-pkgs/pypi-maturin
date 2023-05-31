@@ -5,7 +5,7 @@
 #
 Name     : pypi-maturin
 Version  : 0.14.17
-Release  : 4
+Release  : 5
 URL      : https://files.pythonhosted.org/packages/e4/83/8d43216b175e5840802af49d530761bce3176f0b502c561d1735eab82b57/maturin-0.14.17.tar.gz
 Source0  : https://files.pythonhosted.org/packages/e4/83/8d43216b175e5840802af49d530761bce3176f0b502c561d1735eab82b57/maturin-0.14.17.tar.gz
 Source1  : http://localhost/cgit/vendor/pypi-maturin/snapshot/pypi-maturin-2023-03-27-18-46-10.tar.xz
@@ -18,7 +18,9 @@ Requires: pypi-maturin-python = %{version}-%{release}
 Requires: pypi-maturin-python3 = %{version}-%{release}
 Requires: rustc
 BuildRequires : buildreq-distutils3
+BuildRequires : pypi(setuptools)
 BuildRequires : pypi(setuptools_rust)
+BuildRequires : pypi(wheel)
 BuildRequires : rustc
 # Suppress stripping binaries
 %define __strip /bin/true
@@ -92,7 +94,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1683041202
+export SOURCE_DATE_EPOCH=1685555470
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
