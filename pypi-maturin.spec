@@ -5,7 +5,7 @@
 #
 Name     : pypi-maturin
 Version  : 0.14.17
-Release  : 6
+Release  : 7
 URL      : https://files.pythonhosted.org/packages/e4/83/8d43216b175e5840802af49d530761bce3176f0b502c561d1735eab82b57/maturin-0.14.17.tar.gz
 Source0  : https://files.pythonhosted.org/packages/e4/83/8d43216b175e5840802af49d530761bce3176f0b502c561d1735eab82b57/maturin-0.14.17.tar.gz
 Source1  : http://localhost/cgit/vendor/pypi-maturin/snapshot/pypi-maturin-2023-03-27-18-46-10.tar.xz
