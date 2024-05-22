@@ -1,2 +1,9 @@
 # This file contains recursive sources that require this package
+pypi-nh3
+pypi-pydantic_core
+pypi-regress
+pypi-rpds_py
+pypi-safetensors
+pypi-tokenizers
+pypi-watchfiles
 pypi-y_py
